@@ -1,0 +1,40 @@
+{% extends "crearcliente.html" %}
+
+{% block title %} Ingresar nuevos productos {% endblock %}
+
+
+{% block nav %}  <a  class="titulo_lnk" href="/articulos/">Volver a Artículos</a> {% endblock %}
+
+
+{% block div %}   <div class="container text-start"><h1>Ingresar nuevo Producto </h1></div> {% endblock %}
+
+{% block form %}  <form action="/InsertaArt/" method="POST"> <!-- Se necesita una ruta aqui para el boton guardar, ojo que debe partir con / para que quede desde raiz --> {% endblock %}
+
+
+{% block div2 %} 
+<div class="container text-left"> 
+                
+    <label for="cod_art">Código Art.:</label>
+    <br>
+    <input type="number" class="inputs"  name="cod_art" min="150" >
+    <br>
+ 
+    <label for="campo_nommbre">Ingrese nombre del artículo:</label>
+    <br>
+    <input type="text" class="inputs" name="nombre"  >
+    <br>
+
+    <label for="campo_direccion">Ingrese una sección o departamento:</label>
+    <br>
+    <input type="text" class="inputs" name="seccion"  >
+    <br>
+
+    <label for="campo_telefono">Ingrese Precio ($):</label>
+    <br>
+    <input type="number" class="inputs" name="precio" value="1000" min="10"  >
+    <br>
+    
+    <input type="submit" value="Guardar Datos" class="btn btn-primary btn-lg" style="width:100%"/>
+    <!-- <input type="submit" value="Guardar Datos" class="btn btn-outline-primary btn-lg" style="width:100%"/> -->
+
+{% endblock %}

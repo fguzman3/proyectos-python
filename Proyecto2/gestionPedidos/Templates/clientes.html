@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Base de clientes</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        {% load static %}
+        <link href="{% static 'gestionPedidos/css/styles.css' %}" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"/>
+        
+              
+    
+    </head>
+    <nav class="common-nav"> 
+         <h4 >
+                <a class="titulo_lnk" href="/">Volver al Menú</a>
+         </h4>
+              
+   </nav>
+                       
+    <body>
+        <div class="container-flex container text-start">
+            <h1>Listado Clientes</h1>
+             <a href="/crearCliente" class="btn btn-primary" >Crear nuevo cliente</a> <!--- Aqui hago la referencia del botón crear cliente -->
+        </div>
+        
+        
+        <div class="container text-center">
+        
+            {% if msj %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <h5>{{ msj }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+
+            {% if msj2 %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <h5>{{ msj2 }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+
+
+            {% if cli %}
+
+                <table class="table table-hover" style="border: 4px solid rgb(168, 168, 168);">
+                    <tr style= "background-color: #377BA8;  color: white;" >
+                        <th>ID</th>
+                        <th>RUT CLIENTE</th>
+                        <th>NOMBRE</th>
+                        <th>DIRECCION</th>
+                        <th>TELEFONO</th>
+                        <th>EMAIL</th>
+                        <th>EDITAR</th>
+                        <th>ELIMINAR REGISTRO</th>
+                    </tr>
+                
+                {% for x in cli %}
+
+                    <tr class="align-middle">
+                        <td>{{ x.id }}</td>
+                        <td>{{ x.rut }}</td>
+                        <td>{{ x.nombre}}</td>
+                        <td>{{ x.direccion}}</td>
+                        <td>{{ x.telefono}}</td>
+                        <td>{{ x.email}}</td>
+                        <td>
+                            <a href="/actualizar_cliente/{{ x.id }}" class="btn btn-lg">   <!-- aqui se configura la url para el boton Editar -->
+                                <i class="bi bi-pencil-fill"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <!-- Se crea boton JS para eliminar ids  -->
+                            <button type="button" onClick="botonEliminar({{ x.id }})" class="btn btn-lg">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+                </table>
+            
+            {% else %}
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <h5>No existen registros para Mostrar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+   
+                
+        <script>
+            const botonEliminar = (id) => {
+                if(window.confirm("¿Está seguro de querer eliminar a este cliente?")){
+                    window.location.href = "/eliminarCliente/"+id;   //aquí le paso la url asociada a la vista.
+                }
+            }
+        </script>
+              
+           
+
+   
+    </body>
+</html>

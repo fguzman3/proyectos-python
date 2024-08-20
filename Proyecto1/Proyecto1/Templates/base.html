@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- El bock title sirve para indicar a html que este titulo será dinamico y por tanto que no lo herede a otras plantillas hijas  -->
+    <title> 
+        {% block title %}  
+               
+        {% endblock %}
+    </title>
+</head>
+<h4 class='hora'> {{ hora_actual }}</h4>
+
+<style>
+    .hora{
+        margin: 0;
+        padding: 10px 10px; 
+        background-color: #377BA8;
+        color: aliceblue;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* float: right; */
+        text-align:right;
+        
+    }
+
+
+    .barra{
+        background-color: #377BA8;
+        color: aliceblue;
+        margin: 0;
+        padding: 0; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+    
+    }
+</style>
+
+<body>
+
+    <div class="barra"> <!-- incrustando una plantilla: -->
+          {% include 'barra.html' %}
+        
+    </div>
+    
+ 
+    <div>
+            <h1>Hola mundo mediante template estamos aqu&iacute; en la ruta {{ plt_nro }} </h1>
+            <!-- aqui estoy ocupando el condicional del IF en base a una variable del diccionario que está en la view -->
+                {% if nombre == "Fernando" %}
+                <h2><p style="color: blue; font-weight: bold;"> Estudiante: {{ apellido }} / {{ nombre }}      
+                    <br> Carrera: {{ carrera}} </p></h2>
+            {% else %}
+                <p style="color: red; font-weight: bold;">El nombre del estudiante no está registrado correctamente, revisar datos</p>
+            {% endif %}
+            <!--El bock content sirve para indicar a html que este contenido será dinamico y por tanto que no lo herede a otras plantillas hijas  -->
+{% block content %}
+             
+{% endblock %}
+
+            <strong><p>Lista de temas a revisar para aprender django:</p></strong>
+            <p>
+                {%if Listado%}
+
+                    <ul> <!-- ul :  lista desordenada -->
+                    {% for t in Listado %}
+                    <li> {{t}}</li>   <!-- li.: ES UNA LISTA ORDENADA -->
+                    
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Sin elementos que Mostrar del listado</p>             
+                {%endif%}
+            </p>
+
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primera Pagina con Django</title>
+</head>
+<h4> {{ hora_actual }}</h4>
+<body>
+    <h1>Hola mundo mediante template estamos aqu&iacute; en la ruta {{ plt_nro }} </h1>
+    <!-- aqui estoy ocupando el condicional del IF en base a una variable del diccionario que está en la view -->
+        {% if nombre == "Fernando" %}
+        <h2><p style="color: blue; font-weight: bold;"> Estudiante: {{ apellido }} / {{ nombre }}      
+            <br> Carrera: {{ carrera}} </p></h2>
+    {% else %}
+        <p style="color: red; font-weight: bold;">El nombre del estudiante no está registrado correctamente, revisar datos</p>
+    {% endif %}
+        <h3><p>En esta p&aacute;gina aplicar&eacute; IF condicional y ademas a nivel de backend trabajare con loader, que es una clase del modulo Template de django </p></h3>
+    <p> 
+        <ol>
+
+            <li>El modulo loader permite abrir un flujo de datos externos, sin tener que pasarle manualmente la ruta de donde se origina el dato.</li>
+            <li>Del modulo loader usaremos la clase get_template, que permite hacer la acción indicada</li>
+            <li>se debe importar asi:   from django.template.loader import get_template en la parte de las vistas (views.py)</li>
+            <li>Se debe verificar en archivo settings.py la ruta donde quedaran los templates.</li>
+        </ol>
+        </p>
+
+    <strong><p>Lista de temas a revisar para aprender django:</p></strong>
+    <p>
+        {%if Listado%}
+
+            <ul> <!-- ul :  lista desordenada -->
+            {% for t in Listado %}
+            <li> {{t}}</li>   <!-- li.: ES UNA LISTA ORDENADA -->
+            
+            {% endfor %}
+            </ul>
+        {% else %}
+              <p>Sin elementos que Mostrar del listado</p>             
+        {%endif%}
+    </p>
+
+       
+    
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primera Pagina con Django</title>
+</head>
+<h4> {{ hora_actual }}</h4>
+
+<body>
+
+    <div><!-- incrustando una plantilla: -->
+        {% include 'barra.html' %}</div>
+    <div>
+    <h1>Hola mundo mediante template estamos aqu&iacute; en la ruta {{ plt_nro }} </h1>
+    <!-- aqui estoy ocupando el condicional del IF en base a una variable del diccionario que está en la view -->
+        {% if nombre == "Fernando" %}
+        <h2><p style="color: blue; font-weight: bold;"> Estudiante: {{ apellido }} / {{ nombre }}      
+            <br> Carrera: {{ carrera}} </p></h2>
+    {% else %}
+        <p style="color: red; font-weight: bold;">El nombre del estudiante no está registrado correctamente, revisar datos</p>
+    {% endif %}
+        <h3><p>En esta p&aacute;gina aplicar&eacute; a nivel de backend trabajaré con el metodo render, que es una clase del modulo shorcuts de django.
+            <br>
+            además revisaré como usar plantillas incrustadas agregando un barra de navegación  y dandole un poco style básico con css: </p></h3>
+    <p> 
+        <ol>
+
+            <li>Uso de render , como transmisor de flujo de datos externos (plantillas) desde el modulo de django "shorcuts".</li>
+            <li>Se eliminan las variables del método tradicional (docexterno, documento y contexto) y se pasa directo como parametro al metodo render. </li> 
+            <li>Se debe tener registrada la carpeta de los templates, como se hizo antes en setting.py </li> 
+            <li>Return: an HttpResponse whose content is filled with the result of calling django.template.loader.render_to_string() with the passed arguments. </li> 
+     
+        </ol>
+        </p>
+
+    <strong><p>Lista de temas a revisar para aprender django:</p></strong>
+    <p>
+        {%if Listado%}
+
+            <ul> <!-- ul :  lista desordenada -->
+            {% for t in Listado %}
+            <li> {{t}}</li>   <!-- li.: ES UNA LISTA ORDENADA -->
+            
+            {% endfor %}
+            </ul>
+        {% else %}
+              <p>Sin elementos que Mostrar del listado</p>             
+        {%endif%}
+    </p>
+
+</div>
+    
+
+</body>
+</html>

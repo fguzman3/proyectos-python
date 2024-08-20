@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Página con Django heredada {% endblock %}
+   
+{% block content %}
+
+    <h3><p>En esta p&aacute;gina aplicar&eacute; conocimientos a nivel del frontend; trabajaré con una plantilla base y una plantilla que hereda esa base,
+    <br> Pasos a seguir:
+    </p></h3>
+    <p> 
+        <ol>
+
+            <li>Crear una plantilla "base".</li>
+            <li>en la plantilla hija (en este caso miplantilla_7.html) usar el tag al inicio como {  % extends "base.html" %  } .</li>
+            <li>El tag "{   % block content %}" deja dinamico cualquier parte del contenido;de hecho esta parte esta creada dinámicamente</li>
+            <li>Este aprendizaje lo obtuve desde el siguiente video:</li>
+            <br>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/d1-UX6aR_TM?si=bdItcukSBBCcePrb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            </iframe>
+            
+
+        </ol>
+    </p>
+    
+{% endblock %}

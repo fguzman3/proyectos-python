@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeraPagina</title>
+</head>
+<h4> {{ hora_actual }}</h4>
+<body>
+    <h1>Hola mundo mediante template estamos aqu&iacute; en la ruta {{ plt_nro }} 
+    <h3><p>En esta p&aacute;gina aplicar&eacute; el incrustar listas y trabajar con estructuras de flujo de control (ciclo for e IF) </p></h3>
+
+    <strong><p>Lista de temas a revisar para aprender django:</p></strong>
+    <p>
+        {%if Listado%}
+
+            <ul> <!-- ul :  lista desordenada -->
+            {% for t in Listado %}
+            <li> {{t}}</li>   <!-- li.: ES UNA LISTA ORDENADA -->
+            
+            {% endfor %}
+            </ul>
+        {% else %}
+              <p>Sin elementos que Mostrar del listado</p>             
+        {%endif%}
+    </p>
+
+       
+    
+
+</body>
+</html>

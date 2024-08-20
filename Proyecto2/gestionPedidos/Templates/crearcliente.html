@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <title>  {% block title %} Crear Cliente  {% endblock %}</title>
+       
+        {% load static %}
+        <link href="{% static 'gestionPedidos/css/styles.css' %}" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    </head>
+
+    <nav class="common-nav">
+        <h4 >
+            {% block nav %}
+            <a  class="titulo_lnk" href="/clientes/">Volver a clientes</a>
+            
+            {% endblock %}
+       
+       </h4>
+  </nav>
+
+
+    <body>
+        {% block div %}
+    <div 
+    
+        class="container text-start"><h1>Ingresar nuevo cliente</h1>
+    </div>
+        {% endblock %}
+
+    <div class="container text-center">
+        
+        {% block form %}
+           <form action="/IngresadoCli/" method="POST"> <!-- Se necesita una ruta aqui para el boton guardar, ojo que debe partir con / para que quede desde raiz -->
+        
+        {% endblock %}
+        
+            {% csrf_token %}
+                 
+            {% if msj_a %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h5>{{ msj_a }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+
+            {% if msj_b %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <h5>{{ msj_b }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+
+
+        </div>  
+  {% block div2 %}
+            <div class="container text-left"> 
+                
+                <label for="campo_rut">Rut del Cliente:</label>
+                <br>
+                <input type="text" class="inputs"  name="rut"  >
+                <br>
+             
+                <label for="campo_nommbre">Ingrese  nombre y apellidos:</label>
+                <br>
+                <input type="text" class="inputs" name="nombre"  >
+                <br>
+
+                <label for="campo_direccion">Ingrese una dirección:</label>
+                <br>
+                <input type="text" class="inputs" name="direccion"  >
+                <br>
+
+                <label for="campo_telefono">Ingrese un telefono:</label>
+                <br>
+                <input type="text" class="inputs" name="telefono"  >
+                <br>
+
+
+                <label for="campo_email">Ingrese un E-mail:</label>
+                <br>
+                <input type="email" class="inputs" name="email"  >
+                <br>
+              
+                
+                <input type="submit" value="Guardar Datos" class="btn btn-primary btn-lg" style="width:100%"/>
+                <!-- <input type="submit" value="Guardar Datos" class="btn btn-outline-primary btn-lg" style="width:100%"/> -->
+            
+            </div>
+       {% endblock %}         
+             
+            </form>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    </body>
+</html>

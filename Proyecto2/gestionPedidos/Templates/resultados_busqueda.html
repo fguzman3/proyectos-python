@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>  
+    <h4><a href="/">Volver al index</a></h4></li>
+    <h4><a href="/buscarProductos/">Volver al buscador de Productos</a></h4></li>
+
+    <!-- RECORDAR QUE ESTAS VARIABLES VIENEN DESDE EL DICCIONARIO QUE LE PASE AL RENDER -->
+    <p>Estas buscando el siguiente árticulo: {{query}}</p>
+
+    {% if articulos %}
+
+    <p>Cantidad de artículos encontrados: {{articulos|length}}</p>
+
+    <ul>
+
+        {% for art in articulos %}
+        <li>
+            {{art.nombre}}
+            {{art.seccion}}
+            {{art.precio}}
+
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% else %}
+
+    <p> Articulo no encontrado </p>
+
+    {% endif %}
+
+   
+
+</body>
+</html>
